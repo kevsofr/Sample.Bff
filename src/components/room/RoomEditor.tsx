@@ -9,7 +9,6 @@ const RoomEditor: React.FC = () => {
         id: 0,
         name: ""
     });
-    const isOpen = useSelector((state: RootState) => state.room.isLoading);
 
     const [id, setId] = React.useState(currentRoom.id);
     const [name, setName] = React.useState(currentRoom.name);
