@@ -1,42 +1,42 @@
-import { runSaga } from "redux-saga";
-import { getRooms } from "../roomSaga";
+import { runSaga, Saga } from "redux-saga";
+import { fetchRooms } from "../roomSaga";
 import * as api from "../../api/roomApi";
 import { Room } from "../../domain/Room";
 
 test("should fetch rooms and dispatch success action", async () => {
     const rooms: Room[] = [{ id: 1, name: "Title" }];
-    const fetchRooms = jest.spyOn(api, "fetchRooms")
+    const getRooms: any = jest.spyOn(api, "getRooms")
         .mockImplementation(() => Promise.resolve(rooms));
-    const dispatched = [];
+    const dispatched: any[] = [];
 
-    await runSaga({
+    await runSaga<unknown, unknown, Saga<Room[]>>({
         dispatch: (action) => dispatched.push(action)
-    }, getRooms);
+    }, fetchRooms);
 
     const successAction = {
         type: "FETCH_ROOMS_SUCCESS",
         payload: rooms
     };
 
-    expect(fetchRooms).toHaveBeenCalledTimes(1);
+    expect(getRooms).toHaveBeenCalledTimes(1);
     expect(dispatched).toEqual([successAction]);
-    fetchRooms.mockClear();
+    getRooms.mockClear();
 });
 
 test("should fetch rooms and dispatch fail action", async () => {
-    const fetchRooms = jest.spyOn(api, "fetchRooms")
+    const getRooms: any = jest.spyOn(api, "getRooms")
         .mockImplementation(() => Promise.reject());
-    const dispatched = [];
+    const dispatched: any[] = [];
 
     await runSaga({
         dispatch: (action) => dispatched.push(action)
-    }, getRooms);
+    }, fetchRooms);
 
     const failAction = {
         type: "FETCH_ROOMS_FAIL"
     };
 
-    expect(fetchRooms).toHaveBeenCalledTimes(1);
+    expect(getRooms).toHaveBeenCalledTimes(1);
     expect(dispatched).toEqual([failAction]);
-    fetchRooms.mockClear();
+    getRooms.mockClear();
 });

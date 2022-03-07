@@ -4,14 +4,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Rooms from './components/Rooms';
+import Room from './components/room/Room';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="/rooms" element={<Rooms />} />
+          <Route path="/rooms" element={<Room />} />
         </Route>
       </Routes>
     </BrowserRouter>

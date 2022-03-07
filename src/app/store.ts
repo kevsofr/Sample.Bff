@@ -1,10 +1,10 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import createSagaMiddleware from "redux-saga"
-import { roomReducer, RoomState } from "../reducers/roomReducer";
-
+import { roomReducer } from "../reducers/roomReducer";
 import { RoomAction } from "../actions/roomActions";
 import { initSagas } from "../sagas/rootSaga"
+import RoomState from "../states/RoomState";
 
 export interface RootState {
     readonly room: RoomState;
@@ -18,7 +18,7 @@ export type RootActions = RoomAction;
 
 const sagaMiddleware = createSagaMiddleware();
 
-export const store = (): any => {
+const configureStore = (): any => {
     const store = createStore(
         rootReducer,
         composeWithDevTools(
@@ -28,3 +28,5 @@ export const store = (): any => {
     initSagas(sagaMiddleware);
     return store;
 };
+
+export const store = configureStore();
