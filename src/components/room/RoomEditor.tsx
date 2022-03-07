@@ -16,7 +16,7 @@ const RoomEditor: React.FC = () => {
     useEffect(() => {
         setId(currentRoom.id);
         setName(currentRoom.name);
-    }, [currentRoom.id]);
+    }, [currentRoom]);
 
     const saveRoom = () => {
         if (id === 0) {
