@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:7266",
+"RedirectUrl": "",
+"LaunchCommand": "yarn start",
+"WorkingDirectory": "C:\\Users\\kevin\\Documents\\Mes documents\\Projects\\Formations\\Katas\\Room\\Sample.Bff\\Sample.Bff\\Sample.Bff\\ClientApp\\",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}
