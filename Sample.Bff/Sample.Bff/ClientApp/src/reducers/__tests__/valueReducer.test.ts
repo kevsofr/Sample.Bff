@@ -1,5 +1,4 @@
 import { valueFixture } from "../../fixtures/valueFixture";
-import User from "../../models/User";
 import Value from "../../models/Value";
 import { valueReducer } from "../valueReducer";
 
@@ -162,11 +161,12 @@ test("should handle OPEN_MODAL", () => {
             },
             displayModal: false
         }, {
-            type: "OPEN_MODAL_VALUE"
+            type: "OPEN_MODAL_VALUE",
+            payload: 5
         })
     ).toEqual({
         values: [],
-        currentId: 0,
+        currentId: 5,
         currentValue: {
             id: 0,
             name: ""

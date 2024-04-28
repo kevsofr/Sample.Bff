@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
 import User from "../models/User";
-import Menu from "./Menu";
+import Content from "./Content";
 
 const MainPage: React.FC = () => {
     const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const MainPage: React.FC = () => {
     const { user, isAuthenticated }: { user: User, isAuthenticated: boolean } = useSelector((s: RootState) => s.user);
 
     return <>
-        { isAuthenticated && <Menu user={user} /> }
+        { isAuthenticated && <Content user={user} /> }
     </>;
 };
 

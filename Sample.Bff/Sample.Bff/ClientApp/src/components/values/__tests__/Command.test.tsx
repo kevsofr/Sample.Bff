@@ -20,7 +20,7 @@ afterEach(() => {
 test("should render self Command", () => {
     root = createRoot(container);
 
-    act(() => root.render(<Command />));
+    act(() => root.render(<Command openModal={() => {}} />));
     
-    expect(true).toBeTruthy();
+    expect(document.body.querySelector("button")).not.toBeNull();
 });

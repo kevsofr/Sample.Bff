@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kevin\\Documents\\Mes documents\\Projects\\Formations\\Katas\\Room\\Sample.Bff\\Sample.Bff\\Sample.Bff\\Sample.Bff.csproj": {}
+    "C:\\Users\\kevin\\Documents\\Mes documents\\Projects\\Formations\\Katas\\Sample\\Sample.Bff\\Sample.Bff\\Sample.Bff\\Sample.Bff.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kevin\\Documents\\Mes documents\\Projects\\Formations\\Katas\\Room\\Sample.Bff\\Sample.Bff\\Sample.Bff\\Sample.Bff.csproj": {
+    "C:\\Users\\kevin\\Documents\\Mes documents\\Projects\\Formations\\Katas\\Sample\\Sample.Bff\\Sample.Bff\\Sample.Bff\\Sample.Bff.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kevin\\Documents\\Mes documents\\Projects\\Formations\\Katas\\Room\\Sample.Bff\\Sample.Bff\\Sample.Bff\\Sample.Bff.csproj",
+        "projectUniqueName": "C:\\Users\\kevin\\Documents\\Mes documents\\Projects\\Formations\\Katas\\Sample\\Sample.Bff\\Sample.Bff\\Sample.Bff\\Sample.Bff.csproj",
         "projectName": "Sample.Bff",
-        "projectPath": "C:\\Users\\kevin\\Documents\\Mes documents\\Projects\\Formations\\Katas\\Room\\Sample.Bff\\Sample.Bff\\Sample.Bff\\Sample.Bff.csproj",
+        "projectPath": "C:\\Users\\kevin\\Documents\\Mes documents\\Projects\\Formations\\Katas\\Sample\\Sample.Bff\\Sample.Bff\\Sample.Bff\\Sample.Bff.csproj",
         "packagesPath": "C:\\Users\\kevin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kevin\\Documents\\Mes documents\\Projects\\Formations\\Katas\\Room\\Sample.Bff\\Sample.Bff\\Sample.Bff\\obj\\",
+        "outputPath": "C:\\Users\\kevin\\Documents\\Mes documents\\Projects\\Formations\\Katas\\Sample\\Sample.Bff\\Sample.Bff\\Sample.Bff\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\kevin\\AppData\\Roaming\\NuGet\\NuGet.Config",

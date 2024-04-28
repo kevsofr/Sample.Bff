@@ -8,7 +8,7 @@ export const getValues = async (): Promise<Value[]> => {
 
 export const getValueById = async (id: number): Promise<Value> => {
     const response = await client.get(`/remote/values/${id}`);
-    return mapValue(response.data.value);
+    return mapValue(response.data);
 };
 
 export const createValue = async (value: Value): Promise<Value> => {

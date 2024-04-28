@@ -23,6 +23,10 @@ body {
   white-space: nowrap;
 }
 
+.link {
+  cursor: pointer;
+}
+
 button.add {
   color: #0000ff;
   border: none;

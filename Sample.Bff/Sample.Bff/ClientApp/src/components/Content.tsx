@@ -4,7 +4,7 @@ import { NavLink, Route, Routes } from "react-router-dom";
 import Values from "./values/Values";
 import User from "../models/User";
 
-const MainPage: React.FC<{ user: User }> = ({
+const Content: React.FC<{ user: User }> = ({
     user
 }) =>
     <>
@@ -26,4 +26,4 @@ const MainPage: React.FC<{ user: User }> = ({
         </Container>
     </>;
 
-export default MainPage;
+export default Content;

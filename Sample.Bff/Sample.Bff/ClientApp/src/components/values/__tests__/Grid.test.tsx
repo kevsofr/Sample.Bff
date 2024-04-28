@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { act } from "react-dom/test-utils";
-import Grid from "../Grid";
+import Grid, { GridProps } from "../Grid";
 
 let container: any = null;
 let root: any = null;
@@ -20,7 +20,13 @@ afterEach(() => {
 test("should render self Grid", () => {
     root = createRoot(container);
 
-    act(() => root.render(<Grid />));
+    const grid: GridProps = {
+        values: [],
+        updateValue: () => {},
+        deleteValue: () => {}
+    };
+
+    act(() => root.render(<Grid {...grid} />));
     
     expect(true).toBeTruthy();
 });

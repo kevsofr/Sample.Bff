@@ -29,6 +29,7 @@ type FetchValueFail = {
 
 type OpenModalValue = {
     type: "OPEN_MODAL_VALUE";
+    payload: number;
 };
 
 type CloseModalValue = {

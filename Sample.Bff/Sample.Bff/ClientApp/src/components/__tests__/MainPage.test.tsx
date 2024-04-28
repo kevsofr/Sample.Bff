@@ -9,10 +9,17 @@ let container: any = null;
 let root: any = null;
 let store: any = null;
 
+jest.mock("../Content");
+
 beforeEach(() => {
     container = document.createElement("div");
     document.body.appendChild(container);
-    store = configureMockStore()();
+    store = configureMockStore()({
+        user: {
+            user: {},
+            isAuthenticated: true
+        }
+    });
 });
 
 afterEach(() => {
@@ -20,6 +27,7 @@ afterEach(() => {
     container = null;
     root = null;
     store = null;
+    jest.clearAllMocks();
 });
 
 test("should render self MainPage", () => {
@@ -27,5 +35,5 @@ test("should render self MainPage", () => {
 
     act(() => root.render(<Provider store={store}><MainPage /></Provider>));
     
-    expect(true).toBeTruthy();
+    expect(document.body.querySelector("div")?.textContent).toBe("Content");
 });

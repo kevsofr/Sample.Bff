@@ -22,5 +22,5 @@ test("should render self Title", () => {
 
     act(() => root.render(<Title />));
     
-    expect(true).toBeTruthy();
+    expect(document.body.querySelector("h2")?.textContent).toBe("List of fake values");
 });

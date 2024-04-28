@@ -5,7 +5,7 @@ import Grid, { GridProps } from "./Grid";
 import { Col, Row } from "react-bootstrap";
 import Title from "./Title";
 import Command from "./Command";
-import AddModal, { AddModalProps } from "./ValueModal";
+import ValueModal, { ValueModalProps } from "./ValueModal";
 import Value from "../../models/Value";
 
 const Values: React.FC = () => {
@@ -17,12 +17,13 @@ const Values: React.FC = () => {
 
     const gridProps: GridProps = {
         values: useSelector((s: RootState) => s.value.values),
-        updateValue: (v: Value) => dispatch({ type: "UPDATE_VALUE", payload: v }), 
+        openModal: (id: number) => dispatch({ type: "OPEN_MODAL_VALUE", payload: id }), 
         deleteValue: (id: number) => dispatch({ type: "DELETE_VALUE", payload: id })
     };
 
-    const addProps: AddModalProps = {
+    const addProps: ValueModalProps = {
         displayModal: useSelector((s: RootState) => s.value.displayModal),
+        value: useSelector((s: RootState) => s.value.currentValue),
         addValue: (v: Value) => dispatch({ type: "CREATE_VALUE", payload: v }),
         closeModal: () => dispatch({ type: "CLOSE_MODAL_VALUE" })
     };
@@ -35,7 +36,7 @@ const Values: React.FC = () => {
             </Col>
         </Row>
         <Command openModal={() => dispatch({ type: "OPEN_MODAL_VALUE" })} />
-        <AddModal {...addProps} />
+        <ValueModal {...addProps} />
     </>;
 };
 

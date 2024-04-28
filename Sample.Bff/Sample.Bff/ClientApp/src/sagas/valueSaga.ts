@@ -20,7 +20,15 @@ export function* fetchValues() {
 export function* fetchValue() {
     try {
         const id: number = yield select((s: RootState) => s.value.currentId);
-        const value: Value = yield call(getValueById, id);
+        let value: Value = {
+            id: 0,
+            name: ""
+        };
+
+        if (id > 0) {
+            value = yield call(getValueById, id);
+        }
+
         yield put({
             type:"FETCH_VALUE_SUCCESS",
             payload: value
@@ -82,6 +90,7 @@ export default function* valueSaga() {
         takeLatest("FETCH_VALUE", fetchValue),
         takeLatest("CREATE_VALUE", createNewValue),
         takeLatest("UPDATE_VALUE", updateCurrentValue),
-        takeLatest("DELETE_VALUE", deleteCurrentValue)
+        takeLatest("DELETE_VALUE", deleteCurrentValue),
+        takeLatest("OPEN_MODAL_VALUE", fetchValue)
     ]);
 }

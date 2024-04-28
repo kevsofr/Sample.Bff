@@ -15,11 +15,9 @@ test("should handle FETCH_USER", () => {
     ).toEqual({
         user: {
             name: "",
-            role: "User",
             logoutUrl: ""
         },
-        isAuthenticated: false,
-        phoneNumber: ""
+        isAuthenticated: false
     });
 });
 
@@ -56,7 +54,6 @@ test("should handle FETCH_USER_FAIL", () => {
     ).toEqual({
         user: {
             name: "",
-            role: "User",
             logoutUrl: ""
         },
         isAuthenticated: false

@@ -39,7 +39,7 @@ export const valueReducer: Reducer<ValueState, ValueAction> = (
             return {
                 ...state,
                 currentId: 0,
-                value: action.payload
+                currentValue: action.payload
             };
         case "FETCH_VALUE_FAIL":
             return {
@@ -48,6 +48,7 @@ export const valueReducer: Reducer<ValueState, ValueAction> = (
         case "OPEN_MODAL_VALUE":
             return {
                 ...state,
+                currentId: action.payload,
                 displayModal: true
             };
         case "CLOSE_MODAL_VALUE":
@@ -63,7 +64,11 @@ export const valueReducer: Reducer<ValueState, ValueAction> = (
         case "CREATE_VALUE_SUCCESS":
             return {
                 ...state,
-                values: [...state.values, action.payload]
+                values: [...state.values, action.payload],
+                currentValue: {
+                    id: 0,
+                    name: "" 
+                }
             };
         case "CREATE_VALUE_FAIL":
             return {
@@ -77,7 +82,11 @@ export const valueReducer: Reducer<ValueState, ValueAction> = (
         case "UPDATE_VALUE_SUCCESS":
             return {
                 ...state,
-                values: [...state.values.filter(v => v.id !== action.payload.id), action.payload]
+                values: [...state.values.filter(v => v.id !== action.payload.id), action.payload],
+                currentValue: {
+                    id: 0,
+                    name: "" 
+                }
             };
         case "UPDATE_VALUE_FAIL":
             return {
@@ -91,6 +100,7 @@ export const valueReducer: Reducer<ValueState, ValueAction> = (
         case "DELETE_VALUE_SUCCESS":
             return {
                 ...state,
+                values: [...state.values.filter(v => v.id !== state.currentId)],
                 currentId: 0
             };
         case "DELETE_VALUE_FAIL":

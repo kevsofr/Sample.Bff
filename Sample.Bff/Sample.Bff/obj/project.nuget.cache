@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "V3DHC+F/sFc15qVsXX1RHGCCaJqSwxlUGOjk5CVWxoCBTuYMQEECPTaODKdk3xo2jhtQKLI/chKGSH3REGfvSw==",
+  "dgSpecHash": "eze5r0plGT60QiuMbLlaU9e5dcvUxHFivpnWhHlxz8glLDdsLiXwBoXxLwGvQ09ymzqYIUNvhYQNAgGamUDsGQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kevin\\Documents\\Mes documents\\Projects\\Formations\\Katas\\Room\\Sample.Bff\\Sample.Bff\\Sample.Bff\\Sample.Bff.csproj",
+  "projectFilePath": "C:\\Users\\kevin\\Documents\\Mes documents\\Projects\\Formations\\Katas\\Sample\\Sample.Bff\\Sample.Bff\\Sample.Bff\\Sample.Bff.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kevin\\.nuget\\packages\\duende.accesstokenmanagement\\2.1.0\\duende.accesstokenmanagement.2.1.0.nupkg.sha512",
     "C:\\Users\\kevin\\.nuget\\packages\\duende.accesstokenmanagement.openidconnect\\2.1.0\\duende.accesstokenmanagement.openidconnect.2.1.0.nupkg.sha512",

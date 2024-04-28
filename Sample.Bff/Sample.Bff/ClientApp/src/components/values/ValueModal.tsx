@@ -2,34 +2,37 @@ import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import Value from "../../models/Value";
 
-export interface AddModalProps {
+export interface ValueModalProps {
     displayModal: boolean,
+    value: Value,
     addValue: (v: Value) => void,
     closeModal: () => void
 }
 
-const AddModal: React.FC<AddModalProps> = ({
+const ValueModal: React.FC<ValueModalProps> = ({
     displayModal,
+    value,
     addValue,
     closeModal
 }) => {
     const [validated, setValidated] = useState(false);
-    const [id, setId] = useState("");
-    const [name, setName] = useState("");
+    const [id, setId] = useState(value.id);
+    const [name, setName] = useState(value.name);
+
+    const title: string = value.id === 0 ? "Add value" : "Update value";
 
     const handleSubmit = (e: any): void => {
         const form = e.currentTarget;
-        const valueId = parseInt(id);
 
         if (form.checkValidity() === false ||
-            Number.isNaN(valueId) || valueId <= 0 || valueId >= 1_000) {
+            Number.isNaN(id) || id <= 0 || id >= 1_000) {
                 console.log("Error");
-            setValidated(true);
-            e.preventDefault();
-            e.stopPropagation();
+                setValidated(true);
+                e.preventDefault();
+                e.stopPropagation();
         } else {
             addValue({
-                id: valueId,
+                id: id,
                 name: name
             });
             setValidated(false);
@@ -44,7 +47,7 @@ const AddModal: React.FC<AddModalProps> = ({
     return <Modal show={displayModal} onHide={close}>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Modal.Header closeButton>
-                <Modal.Title>Add value</Modal.Title>
+                <Modal.Title>{title}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form.Group className="mb-3">
@@ -53,7 +56,7 @@ const AddModal: React.FC<AddModalProps> = ({
                         type="text"
                         required
                         maxLength={3}
-                        onChange={(e) => setId(e.currentTarget.value)}
+                        onChange={(e) => setId(parseInt(e.currentTarget.value))}
                     />
                     <Form.Control.Feedback type="invalid">
                         Please provide a number between 1 and 999.
@@ -84,4 +87,4 @@ const AddModal: React.FC<AddModalProps> = ({
     </Modal>;
 };
 
-export default AddModal;
+export default ValueModal;
