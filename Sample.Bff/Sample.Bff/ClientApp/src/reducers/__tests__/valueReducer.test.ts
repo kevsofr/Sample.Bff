@@ -6,22 +6,16 @@ test("should handle FETCH_VALUES", () => {
     expect(
         valueReducer({
             values: [],
-            currentId: 0,
-            currentValue: {
-                id: 0,
-                name: ""
-            },
+            currentId: null,
+            currentValue: null,
             displayModal: false
         }, {
             type: "FETCH_VALUES"
         })
     ).toEqual({
         values: [],
-        currentId: 0,
-        currentValue: {
-            id: 0,
-            name: ""
-        },
+        currentId: null,
+        currentValue: null,
         displayModal: false
     });
 });
@@ -32,11 +26,8 @@ test("should handle FETCH_VALUES_SUCCESS", () => {
     expect(
         valueReducer({
             values: [],
-            currentId: 0,
-            currentValue: {
-                id: 0,
-                name: ""
-            },
+            currentId: null,
+            currentValue: null,
             displayModal: false
         }, {
             type: "FETCH_VALUES_SUCCESS",
@@ -44,11 +35,8 @@ test("should handle FETCH_VALUES_SUCCESS", () => {
         })
     ).toEqual({
         values: values,
-        currentId: 0,
-        currentValue: {
-            id: 0,
-            name: ""
-        },
+        currentId: null,
+        currentValue: null,
         displayModal: false
     });
 });
@@ -57,22 +45,16 @@ test("should handle FETCH_VALUES_FAIL", () => {
     expect(
         valueReducer({
             values: [],
-            currentId: 0,
-            currentValue: {
-                id: 0,
-                name: ""
-            },
+            currentId: null,
+            currentValue: null,
             displayModal: false
         }, {
             type: "FETCH_VALUES_FAIL"
         })
     ).toEqual({
         values: [],
-        currentId: 0,
-        currentValue: {
-            id: 0,
-            name: ""
-        },
+        currentId: null,
+        currentValue: null,
         displayModal: false
     });
 });
@@ -81,11 +63,8 @@ test("should handle FETCH_VALUE", () => {
     expect(
         valueReducer({
             values: [],
-            currentId: 0,
-            currentValue: {
-                id: 0,
-                name: ""
-            },
+            currentId: null,
+            currentValue: null,
             displayModal: false
         }, {
             type: "FETCH_VALUE",
@@ -94,10 +73,7 @@ test("should handle FETCH_VALUE", () => {
     ).toEqual({
         values: [],
         currentId: 5,
-        currentValue: {
-            id: 0,
-            name: ""
-        },
+        currentValue: null,
         displayModal: false
     });
 });
@@ -109,10 +85,7 @@ test("should handle FETCH_VALUE_SUCCESS", () => {
         valueReducer({
             values: [],
             currentId: 5,
-            currentValue: {
-                id: 0,
-                name: ""
-            },
+            currentValue: null,
             displayModal: false
         }, {
             type: "FETCH_VALUE_SUCCESS",
@@ -120,9 +93,9 @@ test("should handle FETCH_VALUE_SUCCESS", () => {
         })
     ).toEqual({
         values: [],
-        currentId: 0,
+        currentId: null,
         currentValue: value,
-        displayModal: false
+        displayModal: true
     });
 });
 
@@ -131,21 +104,15 @@ test("should handle FETCH_VALUE_FAIL", () => {
         valueReducer({
             values: [],
             currentId: 5,
-            currentValue: {
-                id: 0,
-                name: ""
-            },
-            displayModal: false
+            currentValue: null,
+            displayModal: true
         }, {
             type: "FETCH_VALUE_FAIL"
         })
     ).toEqual({
         values: [],
-        currentId: 0,
-        currentValue: {
-            id: 0,
-            name: ""
-        },
+        currentId: null,
+        currentValue: null,
         displayModal: false
     });
 });
@@ -154,11 +121,8 @@ test("should handle OPEN_MODAL", () => {
     expect(
         valueReducer({
             values: [],
-            currentId: 0,
-            currentValue: {
-                id: 0,
-                name: ""
-            },
+            currentId: null,
+            currentValue: null,
             displayModal: false
         }, {
             type: "OPEN_MODAL_VALUE",
@@ -166,11 +130,8 @@ test("should handle OPEN_MODAL", () => {
         })
     ).toEqual({
         values: [],
-        currentId: 5,
-        currentValue: {
-            id: 0,
-            name: ""
-        },
+        currentId: null,
+        currentValue: null,
         displayModal: true
     });
 });
@@ -179,22 +140,16 @@ test("should handle CLOSE_MODAL", () => {
     expect(
         valueReducer({
             values: [],
-            currentId: 0,
-            currentValue: {
-                id: 0,
-                name: ""
-            },
+            currentId: 5,
+            currentValue: null,
             displayModal: true
         }, {
             type: "CLOSE_MODAL_VALUE"
         })
     ).toEqual({
         values: [],
-        currentId: 0,
-        currentValue: {
-            id: 0,
-            name: ""
-        },
+        currentId: null,
+        currentValue: null,
         displayModal: false
     });
 });
@@ -205,21 +160,18 @@ test("should handle CREATE_VALUE", () => {
     expect(
         valueReducer({
             values: [],
-            currentId: 0,
-            currentValue: {
-                id: 0,
-                name: ""
-            },
-            displayModal: false
+            currentId: null,
+            currentValue: null,
+            displayModal: true
         }, {
             type: "CREATE_VALUE",
             payload: value
         })
     ).toEqual({
         values: [],
-        currentId: 0,
+        currentId: null,
         currentValue: value,
-        displayModal: false
+        displayModal: true
     });
 });
 
@@ -229,20 +181,17 @@ test("should handle CREATE_VALUE_SUCCESS", () => {
     expect(
         valueReducer({
             values: [],
-            currentId: 0,
+            currentId: null,
             currentValue: value,
-            displayModal: false
+            displayModal: true
         }, {
             type: "CREATE_VALUE_SUCCESS",
             payload: value
         })
     ).toEqual({
         values: [value],
-        currentId: 0,
-        currentValue: {
-            id: 0,
-            name: ""
-        },
+        currentId: null,
+        currentValue: null,
         displayModal: false
     });
 });
@@ -253,19 +202,16 @@ test("should handle CREATE_VALUE_FAIL", () => {
     expect(
         valueReducer({
             values: [],
-            currentId: 0,
+            currentId: null,
             currentValue: value,
-            displayModal: false
+            displayModal: true
         }, {
             type: "CREATE_VALUE_FAIL"
         })
     ).toEqual({
         values: [],
-        currentId: 0,
-        currentValue: {
-            id: 0,
-            name: ""
-        },
+        currentId: null,
+        currentValue: null,
         displayModal: false
     });
 });
@@ -280,21 +226,18 @@ test("should handle UPDATE_VALUE", () => {
     expect(
         valueReducer({
             values: [value],
-            currentId: 0,
-            currentValue: {
-                id: 0,
-                name: ""
-            },
-            displayModal: false
+            currentId: null,
+            currentValue: null,
+            displayModal: true
         }, {
             type: "UPDATE_VALUE",
             payload: updatedValue
         })
     ).toEqual({
         values: [value],
-        currentId: 0,
+        currentId: null,
         currentValue: updatedValue,
-        displayModal: false
+        displayModal: true
     });
 });
 
@@ -308,20 +251,17 @@ test("should handle UPDATE_VALUE_SUCCESS", () => {
     expect(
         valueReducer({
             values: [value],
-            currentId: 0,
+            currentId: null,
             currentValue: updatedValue,
-            displayModal: false
+            displayModal: true
         }, {
             type: "UPDATE_VALUE_SUCCESS",
             payload: updatedValue
         })
     ).toEqual({
         values: [updatedValue],
-        currentId: 0,
-        currentValue: {
-            id: 0,
-            name: ""
-        },
+        currentId: null,
+        currentValue: null,
         displayModal: false
     });
 });
@@ -332,19 +272,16 @@ test("should handle UPDATE_VALUE_FAIL", () => {
     expect(
         valueReducer({
             values: [],
-            currentId: 0,
+            currentId: null,
             currentValue: value,
-            displayModal: false
+            displayModal: true
         }, {
             type: "UPDATE_VALUE_FAIL"
         })
     ).toEqual({
         values: [],
-        currentId: 0,
-        currentValue: {
-            id: 0,
-            name: ""
-        },
+        currentId: null,
+        currentValue: null,
         displayModal: false
     });
 });
@@ -355,11 +292,8 @@ test("should handle DELETE_VALUE", () => {
     expect(
         valueReducer({
             values: [value],
-            currentId: 0,
-            currentValue: {
-                id: 0,
-                name: ""
-            },
+            currentId: null,
+            currentValue: null,
             displayModal: false
         }, {
             type: "DELETE_VALUE",
@@ -368,10 +302,7 @@ test("should handle DELETE_VALUE", () => {
     ).toEqual({
         values: [value],
         currentId: value.id,
-        currentValue: {
-            id: 0,
-            name: ""
-        },
+        currentValue: null,
         displayModal: false
     });
 });
@@ -383,21 +314,15 @@ test("should handle DELETE_VALUE_SUCCESS", () => {
         valueReducer({
             values: [value],
             currentId: value.id,
-            currentValue: {
-                id: 0,
-                name: ""
-            },
+            currentValue: null,
             displayModal: false
         }, {
             type: "DELETE_VALUE_SUCCESS"
         })
     ).toEqual({
         values: [],
-        currentId: 0,
-        currentValue: {
-            id: 0,
-            name: ""
-        },
+        currentId: null,
+        currentValue: null,
         displayModal: false
     });
 });
@@ -409,21 +334,15 @@ test("should handle DELETE_VALUE_FAIL", () => {
         valueReducer({
             values: [value],
             currentId: value.id,
-            currentValue: {
-                id: 0,
-                name: ""
-            },
+            currentValue: null,
             displayModal: false
         }, {
             type: "DELETE_VALUE_FAIL"
         })
     ).toEqual({
         values: [],
-        currentId: 0,
-        currentValue: {
-            id: 0,
-            name: ""
-        },
+        currentId: null,
+        currentValue: null,
         displayModal: false
     });
 });

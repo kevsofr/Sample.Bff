@@ -35,5 +35,5 @@ test("should render self MainPage", () => {
 
     act(() => root.render(<Provider store={store}><MainPage /></Provider>));
     
-    expect(document.body.querySelector("div")?.textContent).toBe("Content");
+    expect(document.body.querySelector("div")).toHaveTextContent("Content");
 });

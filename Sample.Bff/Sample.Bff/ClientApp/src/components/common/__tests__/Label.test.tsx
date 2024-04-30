@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { act } from "react-dom/test-utils";
-import Title from "../Title";
+import Label, { LabelProps } from "../Label";
 
 let container: any = null;
 let root: any = null;
@@ -17,10 +17,15 @@ afterEach(() => {
     root = null;
 });
 
-test("should render self Title", () => {
+test("should render self Label", () => {
     root = createRoot(container);
 
-    act(() => root.render(<Title />));
+    const props: LabelProps = {
+        label: "Name",
+        value: "Fake value"
+    };
+
+    act(() => root.render(<Label {...props} />));
     
-    expect(document.body.querySelector("h2")).toHaveTextContent("List of fake values");
+    expect(document.body.querySelector("label")).toHaveTextContent("Name");
 });

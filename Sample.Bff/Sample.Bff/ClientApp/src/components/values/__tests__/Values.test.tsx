@@ -38,5 +38,5 @@ test("should render self Values", () => {
 
     act(() => root.render(<Provider store={store}><Values /></Provider>));
     
-    expect(document.body.querySelector("h2")?.textContent).toBe("Title");
+    expect(document.body.querySelector("h2")).toHaveTextContent("Title");
 });

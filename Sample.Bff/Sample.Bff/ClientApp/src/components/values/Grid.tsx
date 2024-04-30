@@ -6,13 +6,13 @@ import Value from "../../models/Value";
 
 export interface GridProps {
     values: Value[],
-    openModal: (id: number) => void, 
+    getValue: (id: number) => void, 
     deleteValue: (id: number) => void
 }
 
 const Grid: React.FC<GridProps> = ({
     values,
-    openModal,
+    getValue,
     deleteValue
 }) =>
     <DatatableWrapper
@@ -40,7 +40,7 @@ const Grid: React.FC<GridProps> = ({
                     tbody: "table-body",
                     tr: "link"
                 }}
-                onRowClick={(v: Value) => openModal(v.id)}
+                onRowClick={(v: Value) => getValue(v.id)}
             />
         </Table>
     </DatatableWrapper>;

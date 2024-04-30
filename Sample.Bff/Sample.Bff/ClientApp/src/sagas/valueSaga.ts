@@ -90,7 +90,6 @@ export default function* valueSaga() {
         takeLatest("FETCH_VALUE", fetchValue),
         takeLatest("CREATE_VALUE", createNewValue),
         takeLatest("UPDATE_VALUE", updateCurrentValue),
-        takeLatest("DELETE_VALUE", deleteCurrentValue),
-        takeLatest("OPEN_MODAL_VALUE", fetchValue)
+        takeLatest("DELETE_VALUE", deleteCurrentValue)
     ]);
 }

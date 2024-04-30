@@ -17,14 +17,16 @@ const Values: React.FC = () => {
 
     const gridProps: GridProps = {
         values: useSelector((s: RootState) => s.value.values),
-        openModal: (id: number) => dispatch({ type: "OPEN_MODAL_VALUE", payload: id }), 
+        getValue: (id: number) => dispatch({ type: "FETCH_VALUE", payload: id }), 
         deleteValue: (id: number) => dispatch({ type: "DELETE_VALUE", payload: id })
     };
 
-    const addProps: ValueModalProps = {
+    const valueModalProps: ValueModalProps = {
         displayModal: useSelector((s: RootState) => s.value.displayModal),
         value: useSelector((s: RootState) => s.value.currentValue),
-        addValue: (v: Value) => dispatch({ type: "CREATE_VALUE", payload: v }),
+        submit: (v: Value, isCreation: boolean) => isCreation
+            ? dispatch({ type: "CREATE_VALUE", payload: v })
+            : dispatch({ type: "UPDATE_VALUE", payload: v }),
         closeModal: () => dispatch({ type: "CLOSE_MODAL_VALUE" })
     };
 
@@ -36,7 +38,7 @@ const Values: React.FC = () => {
             </Col>
         </Row>
         <Command openModal={() => dispatch({ type: "OPEN_MODAL_VALUE" })} />
-        <ValueModal {...addProps} />
+        <ValueModal {...valueModalProps} />
     </>;
 };
 

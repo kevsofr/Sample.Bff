@@ -32,5 +32,5 @@ test("should render self Menu", () => {
 
     act(() => root.render(<BrowserRouter><Content user={user} /></BrowserRouter>));
     
-    expect(document.body.querySelector("a")?.textContent).toBe("Value");
+    expect(document.body.querySelector("a")).toHaveTextContent("Value");
 });

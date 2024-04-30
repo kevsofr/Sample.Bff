@@ -4,11 +4,8 @@ import { ValueAction } from "../actions/ValueAction";
 
 const initialState: ValueState = {
     values: [],
-    currentId: 0,
-    currentValue: {
-        id: 0,
-        name: ""
-    },
+    currentId: null,
+    currentValue: null,
     displayModal: false
 };
 
@@ -38,8 +35,9 @@ export const valueReducer: Reducer<ValueState, ValueAction> = (
         case "FETCH_VALUE_SUCCESS":
             return {
                 ...state,
-                currentId: 0,
-                currentValue: action.payload
+                currentId: null,
+                currentValue: action.payload,
+                displayModal: true
             };
         case "FETCH_VALUE_FAIL":
             return {
@@ -48,12 +46,13 @@ export const valueReducer: Reducer<ValueState, ValueAction> = (
         case "OPEN_MODAL_VALUE":
             return {
                 ...state,
-                currentId: action.payload,
                 displayModal: true
             };
         case "CLOSE_MODAL_VALUE":
             return {
                 ...state,
+                currentId: null,
+                currentValue: null,
                 displayModal: false
             };
         case "CREATE_VALUE":
@@ -65,10 +64,9 @@ export const valueReducer: Reducer<ValueState, ValueAction> = (
             return {
                 ...state,
                 values: [...state.values, action.payload],
-                currentValue: {
-                    id: 0,
-                    name: "" 
-                }
+                currentId: null,
+                currentValue: null,
+                displayModal: false
             };
         case "CREATE_VALUE_FAIL":
             return {
@@ -83,10 +81,9 @@ export const valueReducer: Reducer<ValueState, ValueAction> = (
             return {
                 ...state,
                 values: [...state.values.filter(v => v.id !== action.payload.id), action.payload],
-                currentValue: {
-                    id: 0,
-                    name: "" 
-                }
+                currentId: null,
+                currentValue: null,
+                displayModal: false
             };
         case "UPDATE_VALUE_FAIL":
             return {
@@ -101,7 +98,7 @@ export const valueReducer: Reducer<ValueState, ValueAction> = (
             return {
                 ...state,
                 values: [...state.values.filter(v => v.id !== state.currentId)],
-                currentId: 0
+                currentId: null
             };
         case "DELETE_VALUE_FAIL":
             return {

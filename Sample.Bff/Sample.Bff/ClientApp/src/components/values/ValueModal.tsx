@@ -1,41 +1,75 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import Value from "../../models/Value";
+import Input, { InputProps } from "../common/Input";
+import Label, { LabelProps } from "../common/Label";
 
 export interface ValueModalProps {
     displayModal: boolean,
-    value: Value,
-    addValue: (v: Value) => void,
+    value: Value | null,
+    submit: (v: Value, isCreation: boolean) => void,
     closeModal: () => void
 }
 
 const ValueModal: React.FC<ValueModalProps> = ({
     displayModal,
     value,
-    addValue,
+    submit,
     closeModal
 }) => {
     const [validated, setValidated] = useState(false);
-    const [id, setId] = useState(value.id);
-    const [name, setName] = useState(value.name);
+    const [id, setId] = useState(value?.id.toString() ?? "");
+    const [name, setName] = useState(value?.name.toString() ?? "");
+    const idInputRef: React.Ref<HTMLInputElement> = useRef<HTMLInputElement>(null);
 
-    const title: string = value.id === 0 ? "Add value" : "Update value";
+    const idInputProps: InputProps = {
+        label: "Id",
+        value: id,
+        refInput: idInputRef,
+        required: true,
+        maxLength: 3,
+        errorMessage: "Please provide a number between 1 and 999.",
+        onChange: (v: string) => setId(v)
+    };
+
+    const labelInputProps: LabelProps = {
+        label: "Id",
+        value: id,
+    };
+
+    const valueInputProps: InputProps = {
+        label: "Value",
+        value: name,
+        refInput: useRef<HTMLInputElement>(null),
+        required: true,
+        maxLength: 50,
+        errorMessage: "Please provide a name.",
+        onChange: setName
+    };
 
     const handleSubmit = (e: any): void => {
+        setValidated(true);
+        
+        e.preventDefault();
+        e.stopPropagation();
+        
         const form = e.currentTarget;
+        const idValue: number = parseInt(id);
+        let checkCustomValidity: boolean = false;
 
-        if (form.checkValidity() === false ||
-            Number.isNaN(id) || id <= 0 || id >= 1_000) {
-                console.log("Error");
-                setValidated(true);
-                e.preventDefault();
-                e.stopPropagation();
-        } else {
-            addValue({
-                id: id,
+        if (idInputRef !== null && idInputRef.current !== null
+            && (Number.isNaN(idValue) || idValue <= 0 || idValue >= 1_000)) {
+            idInputRef.current.setCustomValidity("Error");
+        } else if (idInputRef !== null && idInputRef.current !== null) {
+            idInputRef.current.setCustomValidity("");
+            checkCustomValidity = true;
+        }
+
+        if (form.checkValidity() && checkCustomValidity) {
+            submit({
+                id: idValue,
                 name: name
-            });
-            setValidated(false);
+            }, value === null);
         }
     };
 
@@ -47,33 +81,15 @@ const ValueModal: React.FC<ValueModalProps> = ({
     return <Modal show={displayModal} onHide={close}>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Modal.Header closeButton>
-                <Modal.Title>{title}</Modal.Title>
+                <Modal.Title>{value === null ? "Add value" : "Update value"}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form.Group className="mb-3">
-                    <Form.Label md={3}>Id</Form.Label>
-                    <Form.Control
-                        type="text"
-                        required
-                        maxLength={3}
-                        onChange={(e) => setId(parseInt(e.currentTarget.value))}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                        Please provide a number between 1 and 999.
-                    </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Label md={3}>Name</Form.Label>
-                    <Form.Control
-                        type="text"
-                        required
-                        maxLength={10}
-                        onChange={(e) => setName(e.currentTarget.value)}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                        Please provide a name.
-                    </Form.Control.Feedback>
-                </Form.Group>
+                {
+                    value === null
+                    ? <Input {...idInputProps} />
+                    : <Label {...labelInputProps}  />
+                }
+                <Input {...valueInputProps} />
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={close}>
