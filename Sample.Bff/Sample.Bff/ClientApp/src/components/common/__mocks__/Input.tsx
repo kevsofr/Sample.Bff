@@ -1,5 +1,5 @@
 import React from "react";
 
-const Input: React.FC = () => <></>;
+const Input: React.FC = () => <>Input</>;
 
 export default Input;

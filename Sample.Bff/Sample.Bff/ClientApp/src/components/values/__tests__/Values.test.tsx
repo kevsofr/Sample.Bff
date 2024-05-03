@@ -1,6 +1,5 @@
-import React from "react";
+import { act } from "react";
 import { createRoot } from "react-dom/client";
-import { act } from "react-dom/test-utils";
 import { Provider } from "react-redux";
 import configureMockStore from "redux-mock-store";
 import Values from "../Values";
@@ -28,6 +27,7 @@ beforeEach(() => {
 afterEach(() => {
     container.remove();
     container = null;
+    act(() => root.unmount());
     root = null;
     store = null;
     jest.clearAllMocks();

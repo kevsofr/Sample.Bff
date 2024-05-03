@@ -1,8 +1,12 @@
-import React, { useRef, useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import React, { useRef } from "react";
+import { Form, Modal } from "react-bootstrap";
 import Value from "../../models/Value";
-import Input, { InputProps } from "../common/Input";
-import Label, { LabelProps } from "../common/Label";
+import { InputProps } from "../common/Input";
+import { LabelProps } from "../common/Label";
+import { IUseValueModal, useValueModal } from "../../hooks/useValueModal";
+import ModalHeader, { ModalHeaderProps } from "../common/ModalHeader";
+import ModalBody, { ModalBodyProps } from "./ModalBody";
+import ModalFooter from "../common/ModalFooter";
 
 export interface ValueModalProps {
     displayModal: boolean,
@@ -17,88 +21,60 @@ const ValueModal: React.FC<ValueModalProps> = ({
     submit,
     closeModal
 }) => {
-    const [validated, setValidated] = useState(false);
-    const [id, setId] = useState(value?.id.toString() ?? "");
-    const [name, setName] = useState(value?.name.toString() ?? "");
-    const idInputRef: React.Ref<HTMLInputElement> = useRef<HTMLInputElement>(null);
+    const {
+        validated,
+        inputs,
+        idInputRef,
+        handleInputChange,
+        handleSubmit,
+        close
+    } : IUseValueModal = useValueModal(value, submit, closeModal);
 
     const idInputProps: InputProps = {
         label: "Id",
-        value: id,
-        refInput: idInputRef,
+        name: "id",
+        value: inputs.id,
+        inputRef: idInputRef,
         required: true,
         maxLength: 3,
         errorMessage: "Please provide a number between 1 and 999.",
-        onChange: (v: string) => setId(v)
+        onChange: handleInputChange
     };
 
     const labelInputProps: LabelProps = {
         label: "Id",
-        value: id,
+        value: inputs.id,
     };
 
     const valueInputProps: InputProps = {
         label: "Value",
-        value: name,
-        refInput: useRef<HTMLInputElement>(null),
+        name: "name",
+        value: inputs.name,
+        inputRef: useRef<HTMLInputElement>(null),
         required: true,
         maxLength: 50,
         errorMessage: "Please provide a name.",
-        onChange: setName
+        onChange: handleInputChange
     };
 
-    const handleSubmit = (e: any): void => {
-        setValidated(true);
-        
-        e.preventDefault();
-        e.stopPropagation();
-        
-        const form = e.currentTarget;
-        const idValue: number = parseInt(id);
-        let checkCustomValidity: boolean = false;
-
-        if (idInputRef !== null && idInputRef.current !== null
-            && (Number.isNaN(idValue) || idValue <= 0 || idValue >= 1_000)) {
-            idInputRef.current.setCustomValidity("Error");
-        } else if (idInputRef !== null && idInputRef.current !== null) {
-            idInputRef.current.setCustomValidity("");
-            checkCustomValidity = true;
-        }
-
-        if (form.checkValidity() && checkCustomValidity) {
-            submit({
-                id: idValue,
-                name: name
-            }, value === null);
-        }
+    const modalHeaderProps: ModalHeaderProps = {
+        isCreation: value === null,
+        creationTitle: "Add value",
+        updateTitle: "Update value"
     };
 
-    const close = () => {
-        setValidated(false);
-        closeModal();
+    const modalBodyProps: ModalBodyProps = {
+        isCreation: value === null,
+        idInputProps: idInputProps,
+        labelInputProps: labelInputProps,
+        valueInputProps: valueInputProps
     };
 
     return <Modal show={displayModal} onHide={close}>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
-            <Modal.Header closeButton>
-                <Modal.Title>{value === null ? "Add value" : "Update value"}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                {
-                    value === null
-                    ? <Input {...idInputProps} />
-                    : <Label {...labelInputProps}  />
-                }
-                <Input {...valueInputProps} />
-            </Modal.Body>
-            <Modal.Footer>
-                <Button variant="secondary" onClick={close}>
-                    Close
-                </Button>
-                <Button type="submit" variant="primary">
-                    OK
-                </Button>
-            </Modal.Footer>
+            <ModalHeader {...modalHeaderProps} />
+            <ModalBody {...modalBodyProps} />
+            <ModalFooter close={close} />
         </Form>
     </Modal>;
 };

@@ -16,7 +16,7 @@ export function* fetchUser() {
     }
 }
 
-function* redirectToLogin() {
+function redirectToLogin() {
     window.location.replace(`${process.env.REACT_APP_URL}/bff/login?returnUrl=${window.location.pathname}`);
 }
 

@@ -29,7 +29,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
     reducer: rootReducer,
-    middleware: [sagaMiddleware, routerMiddleware]
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware).concat(routerMiddleware)
 });
 
 export const history = createReduxHistory(store);

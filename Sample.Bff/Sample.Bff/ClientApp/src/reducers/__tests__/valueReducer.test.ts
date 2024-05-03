@@ -121,8 +121,11 @@ test("should handle OPEN_MODAL", () => {
     expect(
         valueReducer({
             values: [],
-            currentId: null,
-            currentValue: null,
+            currentId: 4,
+            currentValue: {
+                id: 4,
+                name: "Fake value 4"
+            },
             displayModal: false
         }, {
             type: "OPEN_MODAL_VALUE",
@@ -148,7 +151,7 @@ test("should handle CLOSE_MODAL", () => {
         })
     ).toEqual({
         values: [],
-        currentId: null,
+        currentId: 5,
         currentValue: null,
         displayModal: false
     });

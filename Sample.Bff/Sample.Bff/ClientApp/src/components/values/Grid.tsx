@@ -29,7 +29,7 @@ const Grid: React.FC<GridProps> = ({
             }
         ]}
     >
-        <Table striped={true} hover={true} className="table-light">
+        <Table striped hover>
             <TableHeader
                 classes={{
                     thead: "table-header"

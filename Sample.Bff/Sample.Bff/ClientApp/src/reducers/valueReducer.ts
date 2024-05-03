@@ -46,13 +46,13 @@ export const valueReducer: Reducer<ValueState, ValueAction> = (
         case "OPEN_MODAL_VALUE":
             return {
                 ...state,
+                currentId: null,
+                currentValue: null,
                 displayModal: true
             };
         case "CLOSE_MODAL_VALUE":
             return {
                 ...state,
-                currentId: null,
-                currentValue: null,
                 displayModal: false
             };
         case "CREATE_VALUE":

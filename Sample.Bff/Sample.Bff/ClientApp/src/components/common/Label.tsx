@@ -10,8 +10,8 @@ const Label: React.FC<LabelProps> = ({
     label,
     value
 }) => <Form.Group className="mb-3">
-    <Form.Label md={3}>{label}</Form.Label>
-    <Form.Label md={9}>{value}</Form.Label>
+    <span>{label}</span>&nbsp;&nbsp;&nbsp;
+    <span>{value}</span>
 </Form.Group>;
 
 export default Label;

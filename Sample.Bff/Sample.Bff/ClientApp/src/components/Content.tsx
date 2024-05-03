@@ -14,8 +14,8 @@ const Content: React.FC<{ user: User }> = ({
                     <NavLink to="/" className="nav-link">Value</NavLink>
                 </Nav>
                 <Nav className="ms-auto">
-                    <Nav.Link href={`${process.env.REACT_APP_IDENTITY_PROVIDER_URL}/manage/manageaccount`}>{user.name}</Nav.Link>
-                    <Nav.Link href={`${process.env.REACT_APP_URL}${user.logoutUrl}`}>Se déconnecter</Nav.Link>
+                    <Nav.Link href={`${process.env.REACT_APP_IDENTITY_PROVIDER_URL}/diagnostics`}>{user.name}</Nav.Link>
+                    <Nav.Link href={`${process.env.REACT_APP_URL}${user.logoutUrl}`}>Logout</Nav.Link>
                 </Nav>
             </Container>
         </Navbar>

@@ -1,6 +1,5 @@
-import React from "react";
+import { act } from "react";
 import { createRoot } from "react-dom/client";
-import { act } from "react-dom/test-utils";
 import Grid, { GridProps } from "../Grid";
 import { valueFixture } from "../../../fixtures/valueFixture";
 import Value from "../../../models/Value";
@@ -16,6 +15,7 @@ beforeEach(() => {
 afterEach(() => {
     container.remove();
     container = null;
+    act(() => root.unmount());
     root = null;
 });
 

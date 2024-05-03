@@ -1,6 +1,6 @@
 import { act } from "react";
 import { createRoot } from "react-dom/client";
-import Command from "../Command";
+import ModalFooter from "../ModalFooter";
 
 let container: any = null;
 let root: any = null;
@@ -17,10 +17,10 @@ afterEach(() => {
     root = null;
 });
 
-test("should render self Command", () => {
+test("should render self ModalFooter", () => {
     root = createRoot(container);
 
-    act(() => root.render(<Command openModal={() => {}} />));
+    act(() => root.render(<ModalFooter close={() => {}} />));
     
-    expect(document.body.querySelector("button")).not.toBeNull();
+    expect(document.body.querySelector("button")).toHaveTextContent("Close");
 });

@@ -3,8 +3,9 @@ import { Form } from "react-bootstrap";
 
 export interface InputProps {
     label: string,
+    name: string,
     value: string,
-    refInput: Ref<HTMLInputElement>,
+    inputRef: Ref<HTMLInputElement>,
     required: boolean,
     maxLength: number,
     errorMessage: string,
@@ -13,8 +14,9 @@ export interface InputProps {
 
 const Input: React.FC<InputProps> = ({
     label,
+    name,
     value,
-    refInput,
+    inputRef,
     required = false,
     maxLength = 50,
     errorMessage = "",
@@ -23,11 +25,12 @@ const Input: React.FC<InputProps> = ({
     <Form.Label md={3} htmlFor={label}>{label}</Form.Label>
     <Form.Control
         id={label}
-        ref={refInput}
+        name={name}
+        ref={inputRef}
         type="text"
         required={required}
         maxLength={maxLength}
-        onChange={(e) => onChange(e.currentTarget.value)}
+        onChange={onChange}
         value={value}
     />
     <Form.Control.Feedback type="invalid">

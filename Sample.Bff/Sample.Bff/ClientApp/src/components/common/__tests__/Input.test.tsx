@@ -1,7 +1,6 @@
-import React, { useRef } from "react";
+import { act } from "react";
 import { createRoot } from "react-dom/client";
-import { act } from "react-dom/test-utils";
-import Input, { InputProps } from "../input";
+import Input, { InputProps } from "../Input";
 
 let container: any = null;
 let root: any = null;
@@ -14,6 +13,7 @@ beforeEach(() => {
 afterEach(() => {
     container.remove();
     container = null;
+    act(() => root.unmount());
     root = null;
 });
 
@@ -23,7 +23,7 @@ test("should render self Input", () => {
     const props: InputProps = {
         label: "Name",
         value: "Fake value",
-        ref: null,
+        inputRef: null,
         required: true,
         maxLength: 3,
         errorMessage: "Mandatory",

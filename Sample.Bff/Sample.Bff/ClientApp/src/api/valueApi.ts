@@ -25,7 +25,7 @@ export const updateValue = async (value: Value): Promise<Value> => {
         id: value.id,
         name: value.name
     };
-    const response = await client.post(`/remote/values/${value.id}`, request);
+    const response = await client.put(`/remote/values/${value.id}`, request);
     return mapValue(response.data);
 };
 

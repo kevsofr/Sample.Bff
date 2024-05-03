@@ -1,6 +1,6 @@
 import { act } from "react";
 import { createRoot } from "react-dom/client";
-import Label, { LabelProps } from "../Label";
+import ModalHeader, { ModalHeaderProps } from "../ModalHeader";
 
 let container: any = null;
 let root: any = null;
@@ -17,15 +17,16 @@ afterEach(() => {
     root = null;
 });
 
-test("should render self Label", () => {
+test("should render self ModalHeader", () => {
     root = createRoot(container);
 
-    const props: LabelProps = {
-        label: "Name",
-        value: "Fake value"
+    const props: ModalHeaderProps = {
+        isCreation: true,
+        creationTitle: "Add value",
+        updateTitle: "Update value"
     };
 
-    act(() => root.render(<Label {...props} />));
+    act(() => root.render(<ModalHeader {...props} />));
     
-    expect(document.body.querySelector("span")).toHaveTextContent("Name");
+    expect(document.body.querySelector("div.modal-title")).toHaveTextContent("Add value");
 });

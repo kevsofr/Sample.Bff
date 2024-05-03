@@ -1,6 +1,5 @@
-import React from "react";
+import { act } from "react";
 import { createRoot } from "react-dom/client";
-import { act } from "react-dom/test-utils";
 import { BrowserRouter } from "react-router-dom";
 import Content from "../Content";
 import User from "../../models/User";
@@ -18,6 +17,7 @@ beforeEach(() => {
 afterEach(() => {
     container.remove();
     container = null;
+    act(() => root.unmount());
     root = null;
     jest.clearAllMocks();
 });

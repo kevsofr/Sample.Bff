@@ -5,13 +5,13 @@ import { store, history } from "./store";
 import MainPage from "./components/MainPage";
 
 function App() {
-  return (
-    <Provider store={store}>
-      <HistoryRouter history={history}>
-        <MainPage />
-      </HistoryRouter>
-    </Provider>
-  );
+    return (
+        <Provider store={store}>
+            <HistoryRouter history={history}>
+                <MainPage />
+            </HistoryRouter>
+        </Provider>
+    );
 }
 
 export default App;
