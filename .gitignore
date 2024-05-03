@@ -437,7 +437,7 @@ bower_components
 build/Release
 
 # production
-ClientApp/build/
+ClientApp/build
 
 # Dependency directories
 node_modules/
