@@ -10,7 +10,7 @@ let root: any = null;
 let store: any = null;
 
 jest.mock("../Title");
-jest.mock("../Grid");
+jest.mock("../../common/datatable/Datatable");
 jest.mock("../Command");
 jest.mock("../ValueModal");
 

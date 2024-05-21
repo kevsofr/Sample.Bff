@@ -2,9 +2,9 @@ import React from "react";
 import { Modal } from "react-bootstrap";
 
 export interface ModalHeaderProps {
-    isCreation: boolean,
-    creationTitle: string,
-    updateTitle: string
+    isCreation: boolean;
+    creationTitle: string;
+    updateTitle: string;
 }
 
 const ModalHeader: React.FC<ModalHeaderProps> = ({

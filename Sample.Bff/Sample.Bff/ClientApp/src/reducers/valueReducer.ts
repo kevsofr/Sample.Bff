@@ -4,6 +4,8 @@ import { ValueAction } from "../actions/ValueAction";
 
 const initialState: ValueState = {
     values: [],
+    loading: false,
+    error: false,
     currentId: null,
     currentValue: null,
     displayModal: false
@@ -16,16 +18,22 @@ export const valueReducer: Reducer<ValueState, ValueAction> = (
     switch (action.type) {
         case "FETCH_VALUES":
             return {
-                ...state
+                ...state,
+                loading: true,
+                error: false
             };
         case "FETCH_VALUES_SUCCESS":
             return {
                 ...state,
-                values: action.payload
+                values: action.payload,
+                loading: false,
+                error: false
             };
         case "FETCH_VALUES_FAIL":
             return {
-                ...initialState
+                ...initialState,
+                loading: false,
+                error: true
             };
         case "FETCH_VALUE":
             return {

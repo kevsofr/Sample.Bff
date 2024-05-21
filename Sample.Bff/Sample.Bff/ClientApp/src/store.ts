@@ -4,14 +4,14 @@ import { initSagas } from "./sagas/rootSaga";
 import { configureStore } from "@reduxjs/toolkit";
 import { createBrowserHistory } from "history";
 import { createReduxHistoryContext } from "redux-first-history";
-import { userReducer } from "./reducers/userReducer";
+import { managementReducer } from "./reducers/managementReducer";
 import { valueReducer } from "./reducers/valueReducer";
-import UserState from "./states/UserState";
+import ManagementState from "./states/ManagementState";
 import ValueState from "./states/ValueState";
 
 export interface RootState {
     readonly router: any;
-    readonly user: UserState | any;
+    readonly management: ManagementState | any;
     readonly value: ValueState | any;
 }
 
@@ -21,7 +21,7 @@ const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHisto
 
 const rootReducer = combineReducers<RootState>({
     router: routerReducer,
-    user: userReducer,
+    management: managementReducer,
     value: valueReducer
 });
     

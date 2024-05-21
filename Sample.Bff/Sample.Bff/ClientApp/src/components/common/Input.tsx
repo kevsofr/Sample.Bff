@@ -2,14 +2,14 @@ import React, { Ref } from "react";
 import { Form } from "react-bootstrap";
 
 export interface InputProps {
-    label: string,
-    name: string,
-    value: string,
-    inputRef: Ref<HTMLInputElement>,
-    required: boolean,
-    maxLength: number,
-    errorMessage: string,
-    onChange: (e: any) => void
+    label: string;
+    name: string;
+    value: string;
+    inputRef: Ref<HTMLInputElement>;
+    required: boolean;
+    maxLength: number;
+    errorMessage: string;
+    onChange: (e: any) => void;
 }
 
 const Input: React.FC<InputProps> = ({

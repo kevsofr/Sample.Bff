@@ -39,7 +39,7 @@ type HelpCompanyFail = {
     type: "HELP_COMPANY_FAIL";
 };
 
-export type UserAction = FetchUser
+export type ManagementAction = FetchUser
     | FetchUserSuccess
     | FetchUserFail
     | HelpCandidate

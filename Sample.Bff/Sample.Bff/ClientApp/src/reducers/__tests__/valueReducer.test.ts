@@ -6,6 +6,8 @@ test("should handle FETCH_VALUES", () => {
     expect(
         valueReducer({
             values: [],
+            loading: false,
+            error: false,
             currentId: null,
             currentValue: null,
             displayModal: false
@@ -14,6 +16,8 @@ test("should handle FETCH_VALUES", () => {
         })
     ).toEqual({
         values: [],
+        loading: true,
+        error: false,
         currentId: null,
         currentValue: null,
         displayModal: false
@@ -26,6 +30,8 @@ test("should handle FETCH_VALUES_SUCCESS", () => {
     expect(
         valueReducer({
             values: [],
+            loading: true,
+            error: false,
             currentId: null,
             currentValue: null,
             displayModal: false
@@ -35,6 +41,8 @@ test("should handle FETCH_VALUES_SUCCESS", () => {
         })
     ).toEqual({
         values: values,
+        loading: false,
+        error: false,
         currentId: null,
         currentValue: null,
         displayModal: false
@@ -45,6 +53,8 @@ test("should handle FETCH_VALUES_FAIL", () => {
     expect(
         valueReducer({
             values: [],
+            loading: true,
+            error: false,
             currentId: null,
             currentValue: null,
             displayModal: false
@@ -53,6 +63,8 @@ test("should handle FETCH_VALUES_FAIL", () => {
         })
     ).toEqual({
         values: [],
+        loading: false,
+        error: true,
         currentId: null,
         currentValue: null,
         displayModal: false
@@ -63,6 +75,8 @@ test("should handle FETCH_VALUE", () => {
     expect(
         valueReducer({
             values: [],
+            loading: false,
+            error: false,
             currentId: null,
             currentValue: null,
             displayModal: false
@@ -72,6 +86,8 @@ test("should handle FETCH_VALUE", () => {
         })
     ).toEqual({
         values: [],
+        loading: false,
+        error: false,
         currentId: 5,
         currentValue: null,
         displayModal: false
@@ -84,6 +100,8 @@ test("should handle FETCH_VALUE_SUCCESS", () => {
     expect(
         valueReducer({
             values: [],
+            loading: false,
+            error: false,
             currentId: 5,
             currentValue: null,
             displayModal: false
@@ -93,6 +111,8 @@ test("should handle FETCH_VALUE_SUCCESS", () => {
         })
     ).toEqual({
         values: [],
+        loading: false,
+        error: false,
         currentId: null,
         currentValue: value,
         displayModal: true
@@ -103,6 +123,8 @@ test("should handle FETCH_VALUE_FAIL", () => {
     expect(
         valueReducer({
             values: [],
+            loading: false,
+            error: false,
             currentId: 5,
             currentValue: null,
             displayModal: true
@@ -111,6 +133,8 @@ test("should handle FETCH_VALUE_FAIL", () => {
         })
     ).toEqual({
         values: [],
+        loading: false,
+        error: false,
         currentId: null,
         currentValue: null,
         displayModal: false
@@ -121,6 +145,8 @@ test("should handle OPEN_MODAL", () => {
     expect(
         valueReducer({
             values: [],
+            loading: false,
+            error: false,
             currentId: 4,
             currentValue: {
                 id: 4,
@@ -133,6 +159,8 @@ test("should handle OPEN_MODAL", () => {
         })
     ).toEqual({
         values: [],
+        loading: false,
+        error: false,
         currentId: null,
         currentValue: null,
         displayModal: true
@@ -144,6 +172,8 @@ test("should handle CLOSE_MODAL", () => {
         valueReducer({
             values: [],
             currentId: 5,
+            loading: false,
+            error: false,
             currentValue: null,
             displayModal: true
         }, {
@@ -151,6 +181,8 @@ test("should handle CLOSE_MODAL", () => {
         })
     ).toEqual({
         values: [],
+        loading: false,
+        error: false,
         currentId: 5,
         currentValue: null,
         displayModal: false
@@ -163,6 +195,8 @@ test("should handle CREATE_VALUE", () => {
     expect(
         valueReducer({
             values: [],
+            loading: false,
+            error: false,
             currentId: null,
             currentValue: null,
             displayModal: true
@@ -172,6 +206,8 @@ test("should handle CREATE_VALUE", () => {
         })
     ).toEqual({
         values: [],
+        loading: false,
+        error: false,
         currentId: null,
         currentValue: value,
         displayModal: true
@@ -184,6 +220,8 @@ test("should handle CREATE_VALUE_SUCCESS", () => {
     expect(
         valueReducer({
             values: [],
+            loading: false,
+            error: false,
             currentId: null,
             currentValue: value,
             displayModal: true
@@ -193,6 +231,8 @@ test("should handle CREATE_VALUE_SUCCESS", () => {
         })
     ).toEqual({
         values: [value],
+        loading: false,
+        error: false,
         currentId: null,
         currentValue: null,
         displayModal: false
@@ -205,6 +245,8 @@ test("should handle CREATE_VALUE_FAIL", () => {
     expect(
         valueReducer({
             values: [],
+            loading: false,
+            error: false,
             currentId: null,
             currentValue: value,
             displayModal: true
@@ -213,6 +255,8 @@ test("should handle CREATE_VALUE_FAIL", () => {
         })
     ).toEqual({
         values: [],
+        loading: false,
+        error: false,
         currentId: null,
         currentValue: null,
         displayModal: false
@@ -229,6 +273,8 @@ test("should handle UPDATE_VALUE", () => {
     expect(
         valueReducer({
             values: [value],
+            loading: false,
+            error: false,
             currentId: null,
             currentValue: null,
             displayModal: true
@@ -238,6 +284,8 @@ test("should handle UPDATE_VALUE", () => {
         })
     ).toEqual({
         values: [value],
+        loading: false,
+        error: false,
         currentId: null,
         currentValue: updatedValue,
         displayModal: true
@@ -254,6 +302,8 @@ test("should handle UPDATE_VALUE_SUCCESS", () => {
     expect(
         valueReducer({
             values: [value],
+            loading: false,
+            error: false,
             currentId: null,
             currentValue: updatedValue,
             displayModal: true
@@ -263,6 +313,8 @@ test("should handle UPDATE_VALUE_SUCCESS", () => {
         })
     ).toEqual({
         values: [updatedValue],
+        loading: false,
+        error: false,
         currentId: null,
         currentValue: null,
         displayModal: false
@@ -275,6 +327,8 @@ test("should handle UPDATE_VALUE_FAIL", () => {
     expect(
         valueReducer({
             values: [],
+            loading: false,
+            error: false,
             currentId: null,
             currentValue: value,
             displayModal: true
@@ -283,6 +337,8 @@ test("should handle UPDATE_VALUE_FAIL", () => {
         })
     ).toEqual({
         values: [],
+        loading: false,
+        error: false,
         currentId: null,
         currentValue: null,
         displayModal: false
@@ -295,6 +351,8 @@ test("should handle DELETE_VALUE", () => {
     expect(
         valueReducer({
             values: [value],
+            loading: false,
+            error: false,
             currentId: null,
             currentValue: null,
             displayModal: false
@@ -304,6 +362,8 @@ test("should handle DELETE_VALUE", () => {
         })
     ).toEqual({
         values: [value],
+        loading: false,
+        error: false,
         currentId: value.id,
         currentValue: null,
         displayModal: false
@@ -316,6 +376,8 @@ test("should handle DELETE_VALUE_SUCCESS", () => {
     expect(
         valueReducer({
             values: [value],
+            loading: false,
+            error: false,
             currentId: value.id,
             currentValue: null,
             displayModal: false
@@ -324,6 +386,8 @@ test("should handle DELETE_VALUE_SUCCESS", () => {
         })
     ).toEqual({
         values: [],
+        loading: false,
+        error: false,
         currentId: null,
         currentValue: null,
         displayModal: false
@@ -336,6 +400,8 @@ test("should handle DELETE_VALUE_FAIL", () => {
     expect(
         valueReducer({
             values: [value],
+            loading: false,
+            error: false,
             currentId: value.id,
             currentValue: null,
             displayModal: false
@@ -344,6 +410,8 @@ test("should handle DELETE_VALUE_FAIL", () => {
         })
     ).toEqual({
         values: [],
+        loading: false,
+        error: false,
         currentId: null,
         currentValue: null,
         displayModal: false

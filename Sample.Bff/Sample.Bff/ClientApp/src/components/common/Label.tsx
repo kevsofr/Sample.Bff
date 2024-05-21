@@ -2,8 +2,8 @@ import React from "react";
 import { Form } from "react-bootstrap";
 
 export interface LabelProps {
-    label: string,
-    value: string
+    label: string;
+    value: string;
 }
 
 const Label: React.FC<LabelProps> = ({

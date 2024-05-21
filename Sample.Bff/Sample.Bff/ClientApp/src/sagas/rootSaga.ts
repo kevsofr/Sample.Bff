@@ -1,8 +1,8 @@
-import userSaga from "./userSaga";
+import managementSaga from "./managementSaga";
 import valueSaga from "./valueSaga";
 
 const sagas = [
-    userSaga,
+    managementSaga,
     valueSaga
 ];
 

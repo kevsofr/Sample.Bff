@@ -2,6 +2,7 @@ import { all, call, put, select, takeLatest } from "redux-saga/effects";
 import { RootState } from "../store";
 import Value from "../models/Value";
 import { getValueById, getValues, createValue, updateValue, deleteValue } from "../api/valueApi";
+import { log } from "../api/managementApi";
 
 export function* fetchValues() {
     try {
@@ -10,7 +11,8 @@ export function* fetchValues() {
             type:"FETCH_VALUES_SUCCESS",
             payload: values
         });
-    } catch {
+    } catch (error) {
+        yield call(log, error);
         yield put({
             type:"FETCH_VALUES_FAIL"
         });
@@ -33,7 +35,8 @@ export function* fetchValue() {
             type:"FETCH_VALUE_SUCCESS",
             payload: value
         });
-    } catch {
+    } catch (error) {
+        yield call(log, error);
         yield put({
             type:"FETCH_VALUE_FAIL"
         });
@@ -48,7 +51,8 @@ export function* createNewValue() {
             type:"CREATE_VALUE_SUCCESS",
             payload: createdValue
         });
-    } catch {
+    } catch (error) {
+        yield call(log, error);
         yield put({
             type:"CREATE_VALUE_FAIL"
         });
@@ -63,7 +67,8 @@ export function* updateCurrentValue() {
             type:"UPDATE_VALUE_SUCCESS",
             payload: updatedValue
         });
-    } catch {
+    } catch (error) {
+        yield call(log, error);
         yield put({
             type:"UPDATE_VALUE_FAIL"
         });
@@ -77,7 +82,8 @@ export function* deleteCurrentValue() {
         yield put({
             type:"DELETE_VALUE_SUCCESS"
         });
-    } catch {
+    } catch (error) {
+        yield call(log, error);
         yield put({
             type:"DELETE_VALUE_FAIL"
         });

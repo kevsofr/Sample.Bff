@@ -1,8 +1,8 @@
 import { Reducer } from "react";
-import { UserAction } from "../actions/UserAction";
-import UserState from "../states/UserState";
+import { ManagementAction } from "../actions/ManagementAction";
+import ManagementState from "../states/ManagementState";
 
-const initialState: UserState = {
+const initialState: ManagementState = {
     user: {
         name: "",
         logoutUrl: ""
@@ -10,7 +10,7 @@ const initialState: UserState = {
     isAuthenticated: false
 };
 
-export const userReducer: Reducer<UserState, UserAction> = (
+export const managementReducer: Reducer<ManagementState, ManagementAction> = (
     state = initialState,
     action
 ) => {

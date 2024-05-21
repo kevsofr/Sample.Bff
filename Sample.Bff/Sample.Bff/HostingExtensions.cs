@@ -2,6 +2,7 @@
 using Duende.Bff;
 using Duende.Bff.Yarp;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Logging;
 
 namespace Sample.Bff;
@@ -71,6 +72,11 @@ public static class HostingExtensions
         app.MapRemoteBffApiEndpoint("/remote/values", $"{sampleApiUrl}/api/values")
             .RequireAccessToken(TokenType.User);
         app.MapFallbackToFile("index.html");
+        app.MapPost("/log", ([FromBody] PostLogMessageRequest request, ILogger<Program> logger) =>
+        {
+            logger.Log(request.LogLevel, request.Message);
+            return TypedResults.NoContent();
+        });
 
         return app;
     }

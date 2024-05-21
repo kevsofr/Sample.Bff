@@ -1,12 +1,12 @@
 import { userFixture } from "../../fixtures/userFixture";
 import User from "../../models/User";
-import { userReducer } from "../userReducer";
+import { managementReducer } from "../managementReducer";
 
 test("should handle FETCH_USER", () => {
     const user: User = userFixture.create();
 
     expect(
-        userReducer({
+        managementReducer({
             user: user,
             isAuthenticated: true
         }, {
@@ -25,7 +25,7 @@ test("should handle FETCH_USER_SUCCESS", () => {
     const user: User = userFixture.create();
 
     expect(
-        userReducer({
+        managementReducer({
             user: {
                 name: "",
                 logoutUrl: ""
@@ -45,7 +45,7 @@ test("should handle FETCH_USER_FAIL", () => {
     const user: User = userFixture.create();
 
     expect(
-        userReducer({
+        managementReducer({
             user: user,
             isAuthenticated: true
         }, {

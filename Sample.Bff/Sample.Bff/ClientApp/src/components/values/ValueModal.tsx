@@ -9,10 +9,10 @@ import ModalBody, { ModalBodyProps } from "./ModalBody";
 import ModalFooter from "../common/ModalFooter";
 
 export interface ValueModalProps {
-    displayModal: boolean,
-    value: Value | null,
-    submit: (v: Value, isCreation: boolean) => void,
-    closeModal: () => void
+    displayModal: boolean;
+    value: Value | null;
+    submit: (v: Value, isCreation: boolean) => void;
+    closeModal: () => void;
 }
 
 const ValueModal: React.FC<ValueModalProps> = ({

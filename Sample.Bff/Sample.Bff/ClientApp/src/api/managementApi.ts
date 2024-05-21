@@ -8,3 +8,9 @@ export const getUser = async (): Promise<User> => {
         logoutUrl: response.data[8].value,
     };
 }
+
+export const log = async (error: any): Promise<void> =>
+    await client.post("/log", {
+        logLevel: 4,
+        message: error.toString()
+    });

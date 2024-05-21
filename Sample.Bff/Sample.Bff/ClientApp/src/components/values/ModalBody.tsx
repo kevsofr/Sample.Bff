@@ -4,10 +4,10 @@ import Input, { InputProps } from "../common/Input";
 import Label, { LabelProps } from "../common/Label";
 
 export interface ModalBodyProps {
-    isCreation: boolean,
-    idInputProps: InputProps,
-    labelInputProps: LabelProps,
-    valueInputProps: InputProps
+    isCreation: boolean;
+    idInputProps: InputProps;
+    labelInputProps: LabelProps;
+    valueInputProps: InputProps;
 }
 
 const ModalBody: React.FC<ModalBodyProps> = ({

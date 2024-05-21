@@ -11,10 +11,10 @@ const MainPage: React.FC = () => {
         dispatch({ type: "FETCH_USER" });
     }, [dispatch]);
 
-    const { user, isAuthenticated }: { user: User, isAuthenticated: boolean } = useSelector((s: RootState) => s.user);
+    const { user, isAuthenticated }: { user: User, isAuthenticated: boolean } = useSelector((s: RootState) => s.management);
 
     return <>
-        { isAuthenticated && <Content user={user} /> }
+        {isAuthenticated && <Content user={user} />}
     </>;
 };
 

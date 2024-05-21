@@ -1,5 +1,5 @@
 import { all, call, put, takeLatest } from "redux-saga/effects";
-import { getUser } from "../api/userApi";
+import { getUser, log } from "../api/managementApi";
 import User from "../models/User";
 
 export function* fetchUser() {
@@ -9,7 +9,8 @@ export function* fetchUser() {
             type:"FETCH_USER_SUCCESS",
             payload: user
         });
-    } catch {
+    } catch (error) {
+        yield call(log, error);
         yield put({
             type:"FETCH_USER_FAIL"
         });

@@ -14,7 +14,7 @@ beforeEach(() => {
     container = document.createElement("div");
     document.body.appendChild(container);
     store = configureMockStore()({
-        user: {
+        management: {
             user: {},
             isAuthenticated: true
         }
