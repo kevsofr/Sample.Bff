@@ -8,13 +8,13 @@ export interface IUseValueModal {
     handleInputChange: (e: any) => void,
     handleSubmit: (e: any) => void,
     close: () => void
-};
+}
 
 export const useValueModal = (
     value: Value | null,
     submit: (v: Value, isCreation: boolean) => void,
-    closeModal: () => void): IUseValueModal => {
-    
+    closeModal: () => void
+): IUseValueModal => {
     const [validated, setValidated] = useState(false);
     const [inputs, setInputs] = useState({
         id: value?.id.toString() || "",
@@ -54,7 +54,7 @@ export const useValueModal = (
     const createValue = (form: any) => {
         let checkCustomValidity: boolean = false;
         const idValue: number = parseInt(inputs.id);
-      
+    
         if (idInputRef !== null && idInputRef.current !== null
             && (Number.isNaN(idValue) || idValue <= 0 || idValue >= 1_000)) {
             idInputRef.current.setCustomValidity("Error");

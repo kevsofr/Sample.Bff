@@ -11,9 +11,9 @@ import Datatable, { DatatableProps } from "../common/datatable/Datatable";
 
 const Values: React.FC = () => {
     const dispatch = useDispatch();
-    
+
     useEffect(() => {
-        dispatch({ type: "FETCH_VALUES" })
+        dispatch({ type: "FETCH_VALUES" });
     }, [dispatch]);
 
     const datatableProps: DatatableProps<Value> = {

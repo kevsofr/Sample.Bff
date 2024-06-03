@@ -52,7 +52,7 @@ test("should not submit form when id is empty", () => {
     const submitBtn = document.querySelector("button[type=submit]");
 
     if (submitBtn !== null && nameInput !== null) {
-        fireEvent.change(nameInput, {target: {value: "Fake value 5"}});
+        fireEvent.change(nameInput, { target: { value: "Fake value 5" } });
         fireEvent.click(submitBtn);
     }
     
@@ -76,8 +76,8 @@ test("should not submit form when id is not a number", () => {
     const submitBtn = document.querySelector("button[type=submit]");
 
     if (submitBtn !== null && idInput !== null && nameInput !== null) {
-        fireEvent.change(idInput, {target: {value: "Id"}});
-        fireEvent.change(nameInput, {target: {value: "Fake value 5"}});
+        fireEvent.change(idInput, { target: { value: "Id" } });
+        fireEvent.change(nameInput, { target: { value: "Fake value 5" } });
         fireEvent.click(submitBtn);
     }
 
@@ -101,8 +101,8 @@ test("should not submit form when id is lower than 1", () => {
     const submitBtn = document.querySelector("button[type=submit]");
 
     if (submitBtn !== null && idInput !== null && nameInput !== null) {
-        fireEvent.change(idInput, {target: {value: "0"}});
-        fireEvent.change(nameInput, {target: {value: "Fake value 5"}});
+        fireEvent.change(idInput, { target: { value: "0" } });
+        fireEvent.change(nameInput, { target: { value: "Fake value 5" } });
         fireEvent.click(submitBtn);
     }
 
@@ -126,8 +126,8 @@ test("should not submit form when id is greater than 999", () => {
     const submitBtn = document.querySelector("button[type=submit]");
 
     if (submitBtn !== null && idInput !== null && nameInput !== null) {
-        fireEvent.change(idInput, {target: {value: "1000"}});
-        fireEvent.change(nameInput, {target: {value: "Fake value 5"}});
+        fireEvent.change(idInput, { target: { value: "1000" } });
+        fireEvent.change(nameInput, { target: { value: "Fake value 5" } });
         fireEvent.click(submitBtn);
     }
 
@@ -151,8 +151,8 @@ test("should not submit form when name is empty", () => {
     const submitBtn = document.querySelector("button[type=submit]");
 
     if (submitBtn !== null && idInput !== null && nameInput !== null) {
-        fireEvent.change(idInput, {target: {value: "5"}});
-        fireEvent.change(nameInput, {target: {value: ""}});
+        fireEvent.change(idInput, { target: { value: "5" } });
+        fireEvent.change(nameInput, { target: { value: "" } });
         fireEvent.click(submitBtn);
     }
 
@@ -176,8 +176,8 @@ test("should submit form when form is valid for creation", () => {
     const submitBtn = document.querySelector("button[type=submit]");
 
     if (submitBtn !== null && idInput !== null && nameInput !== null) {
-        fireEvent.change(idInput, {target: {value: "5"}});
-        fireEvent.change(nameInput, {target: {value: "Fake value 5"}});
+        fireEvent.change(idInput, { target: { value: "5" } });
+        fireEvent.change(nameInput, { target: { value: "Fake value 5" } });
         fireEvent.click(submitBtn);
     }
 
