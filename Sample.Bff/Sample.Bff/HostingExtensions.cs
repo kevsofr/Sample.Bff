@@ -7,7 +7,7 @@ using Microsoft.IdentityModel.Logging;
 
 namespace Sample.Bff;
 
-public static class HostingExtensions
+internal static class HostingExtensions
 {
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
