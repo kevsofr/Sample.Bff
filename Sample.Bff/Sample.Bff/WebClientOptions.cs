@@ -1,3 +1,3 @@
 ﻿namespace Sample.Bff;
 
-internal record WebClientOptions(string Authority, string ClientId, string Secret);
+public record WebClientOptions(string Authority, string ClientId, string Secret);
