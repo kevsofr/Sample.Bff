@@ -12,7 +12,7 @@ export function* fetchValues() {
             payload: values
         });
     } catch (error) {
-        callLog(error);
+        yield call(callLog, error);
         yield put({
             type:"FETCH_VALUES_FAIL"
         });
@@ -36,7 +36,7 @@ export function* fetchValue() {
             payload: value
         });
     } catch (error) {
-        callLog(error);
+        yield call(callLog, error);
         yield put({
             type:"FETCH_VALUE_FAIL"
         });
@@ -52,7 +52,7 @@ export function* createNewValue() {
             payload: createdValue
         });
     } catch (error) {
-        callLog(error);
+        yield call(callLog, error);
         yield put({
             type:"CREATE_VALUE_FAIL"
         });
@@ -68,7 +68,7 @@ export function* updateCurrentValue() {
             payload: updatedValue
         });
     } catch (error) {
-        callLog(error);
+        yield call(callLog, error);
         yield put({
             type:"UPDATE_VALUE_FAIL"
         });
@@ -83,7 +83,7 @@ export function* deleteCurrentValue() {
             type:"DELETE_VALUE_SUCCESS"
         });
     } catch (error) {
-        callLog(error);
+        yield call(callLog, error);
         yield put({
             type:"DELETE_VALUE_FAIL"
         });
