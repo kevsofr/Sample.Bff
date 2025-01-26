@@ -3,7 +3,7 @@ import * as React from "react";
 const DatatableLoading: React.FC = () =>
     <tbody>
         <tr>
-            <td>DatatableLoading</td>
+            <td id="test-loading-id">DatatableLoading</td>
         </tr>
     </tbody>;
 

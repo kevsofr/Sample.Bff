@@ -3,7 +3,7 @@ import * as React from "react";
 const DatatableError: React.FC = () =>
     <tbody>
         <tr>
-            <td>DatatableError</td>
+            <td id="test-error-id">DatatableError</td>
         </tr>
     </tbody>;
 

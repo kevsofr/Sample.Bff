@@ -12,7 +12,7 @@ jest.mock("../DatatableError");
 
 jest.mock("react-bs-datatable", () => ({
     ...jest.requireActual("react-bs-datatable"),
-    TableHeader: () => <thead><tr><th>TableHeader</th></tr></thead>
+    TableHeader: () => <thead><tr><th id="test-header-id">TableHeader</th></tr></thead>
 }));
 
 beforeEach(() => {
@@ -39,7 +39,7 @@ test("Should render self Datatable", () => {
     
     act(() => root.render(<Datatable {...props} />));
     
-    expect(document.body.querySelector("tr")).toHaveTextContent("TableHeader");
+    expect(document.body.querySelector("#test-header-id")).toHaveTextContent("TableHeader");
 });
 
 test("Should render self Loading", () => {
@@ -55,7 +55,7 @@ test("Should render self Loading", () => {
     
     act(() => root.render(<Datatable {...props} />));
     
-    expect(document.body.querySelector("tbody")).toHaveTextContent("DatatableLoading");
+    expect(document.body.querySelector("#test-loading-id")).toHaveTextContent("DatatableLoading");
 });
 
 test("Should render self Error", () => {
@@ -71,5 +71,5 @@ test("Should render self Error", () => {
     
     act(() => root.render(<Datatable {...props} />));
     
-    expect(document.body.querySelector("tbody")).toHaveTextContent("DatatableError");
+    expect(document.body.querySelector("#test-error-id")).toHaveTextContent("DatatableError");
 });
