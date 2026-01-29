@@ -1,12 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { HistoryRouter } from "redux-first-history/rr6";
 import { ErrorBoundary } from "react-error-boundary";
 import { Col, Container, Row } from "react-bootstrap";
-import { log } from "./api/managementApi";
-import { store, history } from "./store";
+import { store } from "./store";
 import MainPage from "./components/MainPage";
+import { useLogMutation } from "./services/logApi";
 
 const fallbackRender = () =>
     <Container className="small">
@@ -19,17 +18,20 @@ const fallbackRender = () =>
         </Row>
     </Container>;
 
-const logError = (error: Error) => log(error);
+const AppWithErrorBoundary: React.FC = () => {
+    const [log] = useLogMutation()
+    const logError = (error: Error) => log(error);
+
+    return <ErrorBoundary fallbackRender={fallbackRender} onError={logError}>
+        <MainPage />
+    </ErrorBoundary>;
+};
 
 const App: React.FC = () =>
-    <ErrorBoundary fallbackRender={fallbackRender} onError={logError}>
-        <Provider store={store}>
-            <BrowserRouter>
-                <HistoryRouter history={history}>
-                    <MainPage />
-                </HistoryRouter>
-            </BrowserRouter>
-        </Provider>
-    </ErrorBoundary>;
+    <Provider store={store}>
+        <BrowserRouter>
+            <AppWithErrorBoundary />
+        </BrowserRouter>
+    </Provider>;
 
 export default App;

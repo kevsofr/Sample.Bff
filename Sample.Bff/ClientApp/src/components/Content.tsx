@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { NavLink, Route, Routes } from "react-router-dom";
-import Values from "./values/Values";
 import User from "../models/User";
+import Values from "../features/values/components/Values";
 
 const Content: React.FC<{ user: User }> = ({
     user

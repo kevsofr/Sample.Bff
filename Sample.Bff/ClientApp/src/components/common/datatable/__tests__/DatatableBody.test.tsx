@@ -1,25 +1,19 @@
 import "@testing-library/jest-dom";
-import { act } from "react";
-import { createRoot, Root } from "react-dom/client";
-import DatatableError from "../DatatableError";
+import { render } from "@testing-library/react";
+import DatatableBody, { DatatableBodyProps } from "../DatatableBody";
 
-let container: HTMLElement;
-let root: Root;
+jest.mock("react-bs-datatable", () => ({
+    ...jest.requireActual("react-bs-datatable"),
+    TableBody: () => <div>TableBody</div>
+}));
 
-beforeEach(() => {
-    container = document.createElement("table");
-    document.body.appendChild(container);
-});
+test("Should render self DatatableBody", () => {
+    const props: DatatableBodyProps<{}> = {
+        onRowClick: () => {},
+        noResults: ""
+    };
 
-afterEach(() => {
-    container.remove();
-    act(() => root.unmount());
-});
+    render(<DatatableBody {...props} />);
 
-test("Should render self DatatableLoading", () => {
-    root = createRoot(container);
-
-    act(() => root.render(<DatatableError colSpan={5} />));
-
-    expect(document.body.querySelector("td")).toHaveTextContent("Something went wrong...");
+    expect(document.body.querySelector("div")).toHaveTextContent("TableBody");
 });
