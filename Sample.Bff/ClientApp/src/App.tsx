@@ -19,7 +19,7 @@ const fallbackRender = () =>
     </Container>;
 
 const AppWithErrorBoundary: React.FC = () => {
-    const [log] = useLogMutation()
+    const [log] = useLogMutation();
     const logError = (error: Error) => log(error);
 
     return <ErrorBoundary fallbackRender={fallbackRender} onError={logError}>

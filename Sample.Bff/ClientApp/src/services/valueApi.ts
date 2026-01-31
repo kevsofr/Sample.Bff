@@ -7,7 +7,7 @@ export const valueApi = createApi({
     baseQuery: baseQueryWithReauth,
     tagTypes: ["Value"],
     endpoints: builder => ({
-        getValues: builder.query<{ values: Value[] }, {}>({            
+        getValues: builder.query<{ values: Value[] }, {}>({
             query: () => ({
                 url: "/remote/values"
             }),

@@ -9,8 +9,8 @@ export interface DatatableProps<T extends object> {
     headers: TableColumnType<T>[];
     onRowClick: (r: T) => void;
     noResults: string;
-    loading: boolean;
-    error: boolean;
+    isLoading: boolean;
+    isError: boolean;
 };
 
 const Datatable = <T extends object>(props: DatatableProps<T>) => {
@@ -31,9 +31,9 @@ const Datatable = <T extends object>(props: DatatableProps<T>) => {
                             thead: "table-header"
                         }}
                     />
-                    {props.loading && <DatatableLoading colSpan={props.headers.length} />}
-                    {props.error && <DatatableError colSpan={props.headers.length} />}
-                    {!props.loading && !props.error && <DatatableBody {...datatableBodyProps} />}
+                    {props.isLoading && <DatatableLoading colSpan={props.headers.length} />}
+                    {props.isError && <DatatableError colSpan={props.headers.length} />}
+                    {!props.isLoading && !props.isError && <DatatableBody {...datatableBodyProps} />}
                 </Table>
             </Col>
         </Row>

@@ -22,16 +22,16 @@ const Values: React.FC = () => {
             { title: "Name", prop: "name", isSortable: true },
             {
                 prop: "id", isSortable: false, cellProps: { style: { textAlign: "center" } },
-                cell: (v: Value) =>
+                cell: v =>
                     <button className="delete" onClick={() => deleteValue(v.id)}>
                         <FaTimes />
                     </button>
             }
         ],
-        onRowClick: (v: Value) => dispatch(openModal(v.id)),
+        onRowClick: v => dispatch(openModal(v.id)),
         noResults: "Aucune valeur trouvée",
-        loading: isLoading,
-        error: isError
+        isLoading,
+        isError
     };
 
     return <>

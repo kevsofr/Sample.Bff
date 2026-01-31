@@ -36,5 +36,5 @@ test("should render self ModalBody", () => {
 
     render(<ModalBody {...props} />);
     
-    expect(document.body.querySelector("#test-id")).toHaveTextContent("Label");
+    expect(document.body.querySelector("span[data-testid='Label']")).toHaveTextContent("Label");
 });

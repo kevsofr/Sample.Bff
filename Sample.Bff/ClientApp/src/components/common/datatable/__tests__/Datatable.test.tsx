@@ -16,8 +16,8 @@ test("Should render self Datatable", () => {
         headers: [],
         onRowClick: () => {},
         noResults: "",
-        loading: false,
-        error: false
+        isLoading: false,
+        isError: false
     };
     
     render(<Datatable {...props} />);
@@ -31,8 +31,8 @@ test("Should render self Loading", () => {
         headers: [],
         onRowClick: () => {},
         noResults: "",
-        loading: true,
-        error: false
+        isLoading: true,
+        isError: false
     };
     
     render(<Datatable {...props} />);
@@ -46,8 +46,8 @@ test("Should render self Error", () => {
         headers: [],
         onRowClick: () => {},
         noResults: "",
-        loading: false,
-        error: true
+        isLoading: false,
+        isError: true
     };
     
     render(<Datatable {...props} />);

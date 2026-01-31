@@ -17,5 +17,5 @@ test("should render self MainPage", () => {
 
     render(<MainPage />);
     
-    expect(document.body.querySelector("#test-id")).toHaveTextContent("Content");
+    expect(document.body.querySelector("div[data-testid='Content']")).toHaveTextContent("Content");
 });

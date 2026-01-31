@@ -26,5 +26,5 @@ test("should render self Values", () => {
 
     render(<Values />);
     
-    expect(document.body.querySelector("#test-id")).toHaveTextContent("Title");
+    expect(document.body.querySelector("h2[data-testid='Title']")).toHaveTextContent("Title");
 });
