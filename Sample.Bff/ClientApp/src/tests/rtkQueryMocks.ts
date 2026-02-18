@@ -17,7 +17,7 @@ export const mockSuccess = <T>(data: T): HookState<T> => ({
     isError: false
 });
 
-export const mockRtkError = (err: Partial<FetchBaseQueryError> | any): HookState<any> => ({
+export const mockError = (err: Partial<FetchBaseQueryError> | any): HookState<any> => ({
     data: undefined,
     isLoading: false,
     isError: true,

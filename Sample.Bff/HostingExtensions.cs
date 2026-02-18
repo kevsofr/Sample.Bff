@@ -69,7 +69,7 @@ internal static class HostingExtensions
         app.UseBff();
         app.UseAuthorization();
         app.MapBffManagementEndpoints();
-        app.MapRemoteBffApiEndpoint("/remote/values", $"{sampleApiUrl}/api/values")
+        app.MapRemoteBffApiEndpoint("/remote", $"{sampleApiUrl}/api")
             .RequireAccessToken(TokenType.User);
         app.MapFallbackToFile("index.html");
         app.MapPost("/log", ([FromBody] PostLogMessageRequest request, ILogger<Program> logger) =>

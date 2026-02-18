@@ -1,9 +1,8 @@
 import "@testing-library/jest-dom";
 import Values from "../Values";
 import { valueFixture } from "../../../../tests/fixtures/valueFixture";
-import { useDeleteValueMutation, useGetValuesQuery } from "../../../../services/valueApi";
-import { mockSuccess } from "../../../../tests/rtkQueryMocks";
 import { render } from "@testing-library/react";
+import { mockSuccess } from "../../../../tests/rtkQueryMocks";
 
 jest.mock("../Title");
 jest.mock("../../../../components/common/datatable/Datatable");
@@ -14,17 +13,12 @@ jest.mock("react-redux", () => ({
     useDispatch: jest.fn()
 }));
 jest.mock("../../../../services/valueApi", () => ({
-    useGetValuesQuery: jest.fn(),
-    useDeleteValueMutation: jest.fn()
+    useGetValuesQuery: () => mockSuccess(valueFixture.createArrayWith(2)),
+    useDeleteValueMutation: () => []
 }));
 
 test("should render self Values", () => {
-    (useGetValuesQuery as jest.Mock).mockReturnValue(
-        mockSuccess(valueFixture.createArrayWith(2))
-    );
-    (useDeleteValueMutation as jest.Mock).mockReturnValue([]);
-
     render(<Values />);
     
-    expect(document.body.querySelector("h2[data-testid='Title']")).toHaveTextContent("Title");
+    expect(document.body.querySelector("h2[data-testid='title']")).toHaveTextContent("Title");
 });

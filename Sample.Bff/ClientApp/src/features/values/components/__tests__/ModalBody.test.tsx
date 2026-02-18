@@ -1,40 +1,39 @@
 import "@testing-library/jest-dom";
 import ModalBody, { ModalBodyProps } from "../ModalBody";
 import { render } from "@testing-library/react";
+import { valueFixture } from "../../../../tests/fixtures/valueFixture";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { ValueForm } from "../../../../schemas/valueSchema";
 
 jest.mock("../../../../components/common/Input");
+jest.mock("../../../../components/common/NumericInput");
 jest.mock("../../../../components/common/Label");
 
-test("should render self ModalBody", () => {
+const mockRegister: UseFormRegister<ValueForm> = {} as UseFormRegister<ValueForm>;
+const mockErrors: FieldErrors<ValueForm> = {};
+
+test("should render self ModalBody in create", () => {
     const props: ModalBodyProps = {
-        isCreation: false,
-        idInputProps: {
-            label: "Id",
-            name: "id",
-            value: "104",
-            inputRef: null,
-            required: true,
-            maxLength: 3,
-            errorMessage: "Please provide a number between 1 and 999.",
-            onChange: () => {}
-        },
-        labelInputProps: {
-            label: "Id",
-            value: "104"
-        },
-        valueInputProps: {
-            label: "Name",
-            name: "name",
-            value: "Fake value 104",
-            inputRef: null,
-            required: true,
-            maxLength: 50,
-            errorMessage: "Please provide a name.",
-            onChange: () => {}
-        } 
+        isCreation: true,
+        value: valueFixture.create(),
+        register: mockRegister,
+        errors: mockErrors
     };
 
     render(<ModalBody {...props} />);
     
-    expect(document.body.querySelector("span[data-testid='Label']")).toHaveTextContent("Label");
+    expect(document.body.querySelector("span[data-testid='numeric-input']")).toHaveTextContent("NumericInput");
+});
+
+test("should render self ModalBody in update", () => {
+    const props: ModalBodyProps = {
+        isCreation: false,
+        value: valueFixture.create(),
+        register: mockRegister,
+        errors: mockErrors
+    };
+
+    render(<ModalBody {...props} />);
+    
+    expect(document.body.querySelector("span[data-testid='label']")).toHaveTextContent("Label");
 });

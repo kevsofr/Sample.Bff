@@ -1,17 +1,27 @@
-import * as React from "react";
-import { Form } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
+import { FieldValues, Path, UseFormRegister } from "react-hook-form";
 
-export interface LabelProps {
+export interface LabelProps<TFieldValues extends FieldValues> {
     label: string;
     value: string;
+    fieldName: Path<TFieldValues>;
+    register: UseFormRegister<TFieldValues>;
 }
 
-const Label: React.FC<LabelProps> = ({
+const Label = <T extends FieldValues,>({
     label,
-    value
-}) => <Form.Group className="mb-3">
-    <span>{label}</span>&nbsp;&nbsp;&nbsp;
-    <span>{value}</span>
-</Form.Group>;
+    value,
+    fieldName,
+    register
+}: LabelProps<T>) =>
+    <Row className="mb-3">
+        <Col md={3}>
+            <span>{label}</span>
+        </Col>
+        <Col md={9}>
+            <span>{value}</span>
+            <input type="hidden" {...register(fieldName)} />
+        </Col>
+    </Row>;
 
 export default Label;

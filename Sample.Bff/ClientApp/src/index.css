@@ -42,3 +42,10 @@ button.delete {
 input.textbox {
     border: 1px #9ec6ff solid;
 }
+
+.invalid-form {
+    width: 100%;
+    margin-top: .25rem;
+    font-size: .875em;
+    color: #dc3545;
+}

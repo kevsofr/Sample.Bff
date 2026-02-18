@@ -16,7 +16,7 @@ export default defineConfig(({ mode }) => {
           changeOrigin: true,
           secure: false
         },
-        '^/bff/.*': {
+        '^/bff/*': {
           target: env.VITE_ASP_NET_CORE_APP_URL,
           changeOrigin: true,
           secure: false

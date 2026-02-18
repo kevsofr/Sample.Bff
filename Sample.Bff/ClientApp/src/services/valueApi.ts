@@ -2,15 +2,17 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQueryWithReauth } from "./baseQuery";
 import Value from "../models/Value";
 
+interface ValueResponse {
+    values: Value[];
+}
+
 export const valueApi = createApi({
     reducerPath: "valueApi",
     baseQuery: baseQueryWithReauth,
     tagTypes: ["Value"],
     endpoints: builder => ({
-        getValues: builder.query<{ values: Value[] }, {}>({
-            query: () => ({
-                url: "/remote/values"
-            }),
+        getValues: builder.query<ValueResponse, {}>({
+            query: () => ({ url: "/remote/values" }),
             providesTags: result =>
                 result
                     ? [

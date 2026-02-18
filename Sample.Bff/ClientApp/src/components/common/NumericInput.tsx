@@ -1,21 +1,19 @@
 import { Col, Row } from "react-bootstrap";
 import { FieldError, FieldValues, Path, UseFormRegister } from "react-hook-form";
 
-export interface InputProps<TFieldValues extends FieldValues> {
+export interface NumericInputProps<TFieldValues extends FieldValues> {
     label: string;
     fieldName: Path<TFieldValues>;
     register: UseFormRegister<TFieldValues>;
-    maxLength: number;
     error: FieldError | undefined;
 }
 
-const Input = <T extends FieldValues,>({
+const NumericInput = <T extends FieldValues,>({
     label,
     fieldName,
     register,
-    maxLength,
     error
-}: InputProps<T>) =>
+}: NumericInputProps<T>) =>
     <Row className="mb-3">
         <Col>
             <label
@@ -24,14 +22,17 @@ const Input = <T extends FieldValues,>({
                 {label}
             </label>
             <input
-                type="text"
+                type="number"
                 id={fieldName}
                 className="form-control"
-                maxLength={maxLength}
-                {...register(fieldName)}
+                inputMode="numeric"
+                step={1}
+                {...register(fieldName, {
+                    valueAsNumber: true
+                })}
             />
             {error && <p className="invalid-form">{error.message}</p>}
         </Col>
     </Row>;
 
-export default Input;
+export default NumericInput;
